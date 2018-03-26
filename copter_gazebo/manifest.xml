@@ -1,0 +1,6 @@
+<package>
+  <description brief="copter_gazebo">copter_gazebo</description>
+  <depend package="gazebo" />
+  <author>me</author>
+  <license>BSD</license>
+</package>

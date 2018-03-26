@@ -1,0 +1,7 @@
+<launch>
+
+   <include file="$(find copter_description)/launch/ekf_template.launch"/>  
+   <include file="$(find copter_arduino)/launch/arduino_imu.launch"/>   
+   <include file="$(find copter_control)/launch/control.launch"/>
+   
+</launch>

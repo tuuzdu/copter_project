@@ -1,0 +1,137 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <model name="gamezone">
+    <static>true</static>
+
+    <link name="walls">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://gamezone/meshes/walls.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://gamezone/meshes/walls.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://gamezone/materials/scripts</uri>
+            <uri>model://gamezone/materials/textures</uri>
+            <name>Croc/Wall</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <link name="sticks">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://gamezone/meshes/sticks.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://gamezone/meshes/sticks.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <link name="bricks">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://gamezone/meshes/bricks.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://gamezone/meshes/bricks.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <link name="ground">
+	<pose>-4.5 19 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>10 38</size>
+          </plane>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>50</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>true</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>10 38</size>
+          </plane>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://gamezone/materials/scripts</uri>
+            <uri>model://gamezone/materials/textures</uri>
+            <name>Croc/Floor</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+     <link name="outside">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://gamezone/meshes/outside.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://gamezone/meshes/outside.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGrey</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+  </model>
+</sdf>

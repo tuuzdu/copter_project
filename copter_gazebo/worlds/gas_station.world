@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+  <!--  <model name="my_mesh">
+       <pose>0 0 0 1.57 0 0</pose>
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+          <geometry>
+            <mesh><uri>file:///home/tuuzdu/ros_ws/copter_gazebo/meshes/thorax.STL</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>  -->
+
+    <include>
+      <uri>model://gas_station</uri>
+      <name>gas_station</name>
+      <pose>-2.0 7.0 0 0 0 0</pose>
+    </include>
+  </world>
+</sdf>

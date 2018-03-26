@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <model name="barrier_25">
+    <static>true</static>
+
+    <link name="barrier">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://barrier_25/meshes/barrier_25.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://barrier_25/meshes/barrier_25.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://barrier_25/materials/scripts</uri>
+            <uri>model://barrier_25/materials/textures</uri>
+            <name>Croc/Barrier</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <link name="stick">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://barrier_25/meshes/stick.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://barrier_25/meshes/stick.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <link name="brick">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://barrier_25/meshes/brick.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://barrier_25/meshes/brick.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

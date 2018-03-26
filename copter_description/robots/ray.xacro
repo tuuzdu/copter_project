@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="copter_ray">
+
+<!-- Build ray -->
+
+<link name="frame">
+		<collision>
+			<origin	xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<cylinder radius="0.115" length="0.045"/>
+			</geometry>
+		</collision>
+    		<visual>
+      			<origin	xyz="0 0 0" rpy="0 0 0" />
+      			<geometry>
+				<mesh filename="package://copter_description/meshes/stl/frame.STL" />
+      			</geometry>
+    		</visual>
+		<inertial>
+			<mass value="1.9"/>
+			<inertia 	ixx="0" ixy="0" ixz="0" 
+					iyy="0" iyz="0" 
+					izz="0"/>
+		</inertial>
+	</link>
+
+
+  	<joint name="ray_joint" type="revolute">
+    		<origin xyz="0 0 0" rpy="0 0 0" /> 
+    		<parent link="frame" />
+    		<child link="arm" />
+		<limit lower="0" upper="0" effort="0" velocity="0" />
+  	</joint>
+
+    	<link name="arm">
+		<collision>
+			<origin	xyz="0.2 0 -0.008" rpy="0 0 0" />
+			<geometry>
+				<box size="0.19 0.035 0.055"/>
+			</geometry>
+		</collision>
+    		<visual>
+      			<origin	xyz="0.11 0 0" rpy="0 0 0" />
+      			<geometry>
+				<mesh filename="package://copter_description/meshes/stl/arm.STL" />
+      			</geometry>
+    		</visual>
+		<inertial>
+			<mass value="0.08"/>
+			<inertia 	ixx="0" ixy="0" ixz="0" 
+					iyy="0" iyz="0" 
+					izz="0"/>
+		</inertial>
+	</link>
+
+  	
+</robot>

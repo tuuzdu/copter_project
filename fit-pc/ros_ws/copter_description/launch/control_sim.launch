@@ -1,0 +1,9 @@
+<launch>
+	
+	<include file="$(find copter_description)/launch/ekf_template.launch"/>
+
+	<include file="$(find copter_description)/launch/visual_odometry.launch"/>
+	<include file="$(find copter_description)/launch/copter_rviz.launch"/>
+	<include file="$(find copter_control)/launch/control.launch"/>
+
+</launch>

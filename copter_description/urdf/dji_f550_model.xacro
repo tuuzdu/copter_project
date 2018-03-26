@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="copter">
+
+<!-- General -->
+	<xacro:include filename="$(find copter_description)/urdf/dji_f550_gazebo.xacro"/>
+	<xacro:include filename="$(find copter_description)/urdf/sensors/asus_xtion_pro.xacro"/>
+<!-- Ray macros -->
+	<xacro:include filename="$(find copter_description)/urdf/dji_f550_ray.xacro"/>
+
+<!-- Build the body frame -->
+
+	<link name="frame">
+		<collision>
+			<origin	xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<cylinder radius="0.115" length="0.045"/>
+			</geometry>
+		</collision>
+    		<visual>
+      			<origin	xyz="0 0 0" rpy="0 0 0" />
+      			<geometry>
+				<mesh filename="package://copter_description/meshes/stl/frame.STL" />
+      			</geometry>
+     			<material name="Black" />
+    		</visual>
+		<inertial>
+			<mass value="1.9"/>
+			<inertia 	ixx="0" ixy="0" ixz="0" 
+					iyy="0" iyz="0" 
+					izz="0"/>
+		</inertial>
+	</link>
+	<xacro:dji_f550_gazebo_properties link="frame" color="Black" transparency="0"/>
+
+<!-- Build copter rays -->
+	<ray_stick side="r" num="1" 	angle="-${M_PI/6}"	color="Red" />
+	<ray_stick side="r" num="2"	angle="-${M_PI/2}"	color="White" />
+	<ray_stick side="r" num="3" 	angle="-${M_PI*5/6}"	color="White" />
+	<ray_stick side="l" num="1"	angle="${M_PI/6}"	color="Red" />
+	<ray_stick side="l" num="2"	angle="${M_PI/2}"	color="White" />
+	<ray_stick side="l" num="3" 	angle="${M_PI*5/6}"	color="White" />
+
+<!-- Build copter foots -->
+	<ray_foot side="r" num="1" 	angle="-${M_PI/6}"	/>
+	<ray_foot side="r" num="2"	angle="-${M_PI/2}"	/>
+	<ray_foot side="r" num="3" 	angle="-${M_PI*5/6}"	/>
+	<ray_foot side="l" num="1"	angle="${M_PI/6}"	/>
+	<ray_foot side="l" num="2"	angle="${M_PI/2}"	/>
+	<ray_foot side="l" num="3" 	angle="${M_PI*5/6}"	/>
+
+<!-- Build copter fake rays for gazebo -->
+	<fake_ray name="front" 	angle="0"/>
+	<fake_ray name="back" 	angle="${M_PI}"/>
+	<fake_ray name="left" 	angle="${M_PI/2}"/>
+	<fake_ray name="right" 	angle="-${M_PI/2}"/>
+
+<!-- Build 3d sensor for gazebo -->
+	<sensor_base/>
+	<sensor_asus_xtion_pro  parent="3dsensor_link"/> 
+<!-- 3d sensor for simulation -->
+	<copter_sim_3dsensor/>
+  
+</robot>

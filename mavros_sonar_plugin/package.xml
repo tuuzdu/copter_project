@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mavros_sonar_plugin</name>
+  <version>0.0.0</version>
+  <description>Sonar plugin for mavros</description>
+  <license>TODO</license>
+  <maintainer email="tuuzdu@todo.todo">tuuzdu</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>mavlink</depend>
+  <depend>mavros</depend>
+  <depend>roscpp</depend>
+  <depend>geometry_msgs</depend>
+
+  <export>
+    <mavros plugin="${prefix}/mavros_plugins.xml" />
+  </export>
+</package>

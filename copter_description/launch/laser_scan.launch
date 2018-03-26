@@ -1,0 +1,22 @@
+
+<launch>
+
+  <!-- Fake laser -->
+
+  <node pkg="tf" type="static_transform_publisher" name="laser_to_camera" 
+    args="0.0 0.0 0.0 0.0 -0.2 0.0 /camera_depth_frame /laser_link 10" />
+
+  <node pkg="nodelet" type="nodelet" name="laserscan_nodelet_manager" output="screen" args="manager"/>
+  <node pkg="nodelet" type="nodelet" name="depthimage_to_laserscan" output="screen"
+        args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet laserscan_nodelet_manager">
+    <param name="vert_offset_px" value="56.0"/>
+    <param name="scan_height" value="5"/>
+    <param name="output_frame_id" value="/laser_link"/>
+    <param name="range_min" value="0.45"/>
+    <param name="range_max" value="7"/>
+    <remap from="image" to="/camera/depth/image_raw"/>
+    <remap from="scan" to="/scan"/>
+  </node>
+
+</launch>
+

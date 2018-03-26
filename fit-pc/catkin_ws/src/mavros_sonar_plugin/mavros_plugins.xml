@@ -1,0 +1,5 @@
+<library path="lib/libmavros_sonar_plugin">
+	<class name="sonar" type="mavplugin::SonarPlugin" base_class_type="mavplugin::MavRosPlugin">
+		<description>Receive sonar data from apm2</description>
+	</class>
+</library>

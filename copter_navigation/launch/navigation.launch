@@ -1,0 +1,26 @@
+<launch>
+    <!-- Run the map server -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find copter_navigation)/launch/map.yaml" /> 
+
+  <node pkg="tf" type="static_transform_publisher" name="odom_to_map" 
+    args="0.0 0.0 0.0 0.0 0.0 0.0 /odom /map 10" />
+
+  <!--<node pkg="amcl" type="amcl" name="amcl" output="screen" launch-prefix="xterm -e">
+    <param name="odom_frame_id" value="/odometry/filtered"/>
+    <param name="base_frame_id" value="frame"/>
+  </node>-->
+
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen" launch-prefix="xterm -e">
+    <rosparam file="$(find copter_navigation)/launch/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find copter_navigation)/launch/costmap_common_params.yaml" command="load" ns="local_costmap" /> 
+    <rosparam file="$(find copter_navigation)/launch/local_costmap_params.yaml" command="load" /> 
+    <rosparam file="$(find copter_navigation)/launch/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find copter_navigation)/launch/base_local_planner_params.yaml" command="load" />
+    <param name="planner_patience" value="5"/>
+    <param name="controller_patience" value="5"/>
+    <param name="conservative_reset_dist" value="30"/>
+    <param name="planner_frequency" value="3.0"/>
+    <param name="recovery_behavior_enabled" value="true"/>
+  </node>
+
+</launch>
